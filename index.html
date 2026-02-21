@@ -93,6 +93,22 @@
       color: var(--text);
     }
 
+    .header-order {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      padding: 6px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-order:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
     /* ──────────────────────────────────
        HERO
     ────────────────────────────────── */
@@ -163,10 +179,47 @@
       max-width: 380px;
     }
 
+    .hero-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding: 1rem 1.75rem;
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-order:hover {
+      background: var(--accent);
+    }
+
+    .hero-order:hover .hero-order-label,
+    .hero-order:hover .hero-order-num {
+      color: #fff;
+    }
+
+    .hero-order-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .hero-order-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
     .hero-stats {
       display: flex;
       gap: 3rem;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
     }
@@ -447,6 +500,7 @@
       <a href="#muscle" class="nav-link">Performance</a>
       <a href="#recovery" class="nav-link">Recovery</a>
       <a href="#cellular" class="nav-link">Cellular</a>
+      <a href="sms:3104358977" class="header-order">Text to Order</a>
     </div>
   </header>
 
@@ -467,6 +521,11 @@
       <p class="hero-sub">
         Sourced and supplied for research, optimization, and performance. Every compound is offered lyophilized, clearly labeled, and ready for reconstitution. No subscriptions. No noise.
       </p>
+      <a href="sms:3104358977" class="hero-order">
+        <span class="hero-order-label">Text to Order</span>
+        <span class="hero-order-num">310-435-8977</span>
+      </a>
+
       <div class="hero-stats">
         <div>
           <span class="stat-num">15</span>
