@@ -118,10 +118,21 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      align-items: end;
+      align-items: stretch;
     }
 
-    .hero-left {}
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-top: 6rem;
+    }
 
     .hero-label {
       display: flex;
@@ -156,10 +167,6 @@
       font-style: italic;
       color: var(--text-muted);
       display: block;
-    }
-
-    .hero-right {
-      padding-bottom: 0.5rem;
     }
 
     .hero-tagline {
