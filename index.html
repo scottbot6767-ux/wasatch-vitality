@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wasatch Vitality — Research Peptides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0c0b;
+      --surface: #111413;
+      --surface-hover: #171b18;
+      --border: #1e2420;
+      --border-light: #252e28;
+      --text: #c4d4cc;
+      --text-muted: #5e7568;
+      --text-dim: #3d5047;
+      --accent: #58c574;
+      --white: #edf3ef;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ──────────────────────────────────
+       HEADER
+    ────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 60px;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    /* ──────────────────────────────────
+       HERO
+    ────────────────────────────────── */
+    .hero {
+      padding: 7rem 3rem 5rem;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .hero-left {}
+
+    .hero-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-label-line {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-label-text {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 9vw, 9rem);
+      font-weight: 300;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--white);
+    }
+
+    .hero-title .line-2 {
+      font-style: italic;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .hero-right {
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .hero-sub {
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      max-width: 380px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ──────────────────────────────────
+       CATALOG NAV
+    ────────────────────────────────── */
+    .catalog-nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .catalog-nav::-webkit-scrollbar { display: none; }
+
+    .cat-nav-item {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 1.1rem 1.5rem;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .cat-nav-item:first-child {
+      border-left: 1px solid var(--border);
+    }
+
+    .cat-nav-item:hover {
+      color: var(--white);
+      background: var(--surface);
+    }
+
+    /* ──────────────────────────────────
+       CATALOG
+    ────────────────────────────────── */
+    .catalog {
+      padding: 0 3rem;
+    }
+
+    .category-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-section:last-child {
+      border-bottom: none;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .category-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .category-count {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ──────────────────────────────────
+       PRODUCT GRID
+    ────────────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      background: var(--border);
+      border: 1px solid var(--border);
+      gap: 1px;
+    }
+
+    .product-card {
+      background: var(--bg);
+      padding: 2.25rem;
+      transition: background 0.18s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      background: var(--surface-hover);
+    }
+
+    .product-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      flex: 1;
+    }
+
+    .product-dose {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-left: 1rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .product-price sup {
+      font-size: 1rem;
+      vertical-align: super;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+
+    .product-desc {
+      font-size: 0.75rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+    }
+
+    /* ──────────────────────────────────
+       FOOTER
+    ────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand span {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.68rem;
+      line-height: 1.9;
+      color: var(--text-dim);
+      border-left: 1px solid var(--border);
+      padding-left: 2rem;
+    }
+
+    .footer-disclaimer strong {
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    /* ──────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────── */
+    @media (max-width: 900px) {
+      header {
+        padding: 0 1.5rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem 3rem;
+        gap: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: clamp(3.5rem, 14vw, 6rem);
+      }
+
+      .catalog-nav {
+        padding: 0 1.5rem;
+      }
+
+      .catalog {
+        padding: 0 1.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+      }
+
+      .footer-disclaimer {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 2rem;
+      }
+
+      .header-right {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo">Wasatch<span>·</span>Vitality</a>
+    <div class="header-right">
+      <a href="#metabolic" class="nav-link">Metabolic</a>
+      <a href="#muscle" class="nav-link">Performance</a>
+      <a href="#recovery" class="nav-link">Recovery</a>
+      <a href="#cellular" class="nav-link">Cellular</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-label">
+        <div class="hero-label-line"></div>
+        <span class="hero-label-text">Research Grade Peptides — Salt Lake City, UT</span>
+      </div>
+      <h1 class="hero-title">
+        Wasatch
+        <em class="line-2">Vitality</em>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-tagline">Precision compounds for those who refuse to plateau.</p>
+      <p class="hero-sub">
+        Sourced and supplied for research, optimization, and performance. Every compound is offered lyophilized, clearly labeled, and ready for reconstitution. No subscriptions. No noise.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">15</span>
+          <span class="stat-label">Compounds</span>
+        </div>
+        <div>
+          <span class="stat-num">6</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div>
+          <span class="stat-num">UT</span>
+          <span class="stat-label">Based</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG NAV -->
+  <nav class="catalog-nav">
+    <a href="#metabolic" class="cat-nav-item">Metabolic Optimization</a>
+    <a href="#muscle" class="cat-nav-item">Muscle Growth &amp; Performance</a>
+    <a href="#recovery" class="cat-nav-item">Recovery &amp; Regeneration</a>
+    <a href="#intimacy" class="cat-nav-item">Intimacy &amp; Performance</a>
+    <a href="#cellular" class="cat-nav-item">Cellular Vitality</a>
+    <a href="#aesthetic" class="cat-nav-item">Aesthetic &amp; Skin</a>
+    <a href="#essentials" class="cat-nav-item">Essentials</a>
+  </nav>
+
+  <!-- CATALOG -->
+  <main class="catalog">
+
+    <!-- Metabolic Optimization -->
+    <section class="category-section" id="metabolic">
+      <div class="category-header">
+        <h2 class="category-name">Metabolic Optimization</h2>
+        <div class="category-meta">
+          <span class="category-count">4 compounds</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Semaglutide</div>
+            <div class="product-dose">20MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>150</div>
+          <p class="product-desc">GLP-1 receptor agonist commonly marketed for appetite control, weight loss support, blood sugar regulation, and metabolic health.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Tirzepatide</div>
+            <div class="product-dose">50MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>150</div>
+          <p class="product-desc">Dual GIP/GLP-1 agonist promoted for enhanced weight loss, appetite suppression, improved glycemic control, and metabolic optimization.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Retatrutide</div>
+            <div class="product-dose">30MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>150</div>
+          <p class="product-desc">Triple-agonist peptide researched for significant weight loss support, appetite suppression, improved insulin sensitivity, and metabolic enhancement.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Retatrutide</div>
+            <div class="product-dose">20MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>100</div>
+          <p class="product-desc">Triple-agonist peptide researched for significant weight loss support, appetite suppression, improved insulin sensitivity, and metabolic enhancement.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Muscle Growth & Performance -->
+    <section class="category-section" id="muscle">
+      <div class="category-header">
+        <h2 class="category-name">Muscle Growth &amp; Performance</h2>
+        <div class="category-meta">
+          <span class="category-count">3 compounds</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">CJC/Ipamorelin <small style="font-size:0.75rem; color: var(--text-muted); font-family: var(--font-body);">(no DAC)</small></div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>45</div>
+          <p class="product-desc">Growth hormone–releasing peptide blend marketed for increased natural GH secretion, improved recovery, lean muscle support, and sleep enhancement.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Tesamorelin</div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>45</div>
+          <p class="product-desc">Growth hormone–releasing hormone analog marketed for fat reduction (especially visceral fat), improved body composition, and metabolic support.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">IGF-1 LR3</div>
+            <div class="product-dose">1MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>45</div>
+          <p class="product-desc">Long-acting IGF analog promoted for muscle growth, enhanced recovery, improved nutrient partitioning, and anabolic support.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Recovery & Regeneration -->
+    <section class="category-section" id="recovery">
+      <div class="category-header">
+        <h2 class="category-name">Recovery &amp; Regeneration</h2>
+        <div class="category-meta">
+          <span class="category-count">3 compounds</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">BPC-157 / TB-500</div>
+            <div class="product-dose">20MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>45</div>
+          <p class="product-desc">Stack commonly marketed for accelerated injury recovery, tissue repair, reduced inflammation, and improved muscle/tendon healing.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">BPC-157 / TB-500</div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>25</div>
+          <p class="product-desc">Stack commonly marketed for accelerated injury recovery, tissue repair, reduced inflammation, and improved muscle/tendon healing.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">BPC-157</div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>25</div>
+          <p class="product-desc">Peptide researched for accelerated soft tissue healing, gut repair support, reduced inflammation, and injury recovery.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Intimacy & Performance -->
+    <section class="category-section" id="intimacy">
+      <div class="category-header">
+        <h2 class="category-name">Intimacy &amp; Performance</h2>
+        <div class="category-meta">
+          <span class="category-count">1 compound</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">PT-141</div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>20</div>
+          <p class="product-desc">Peptide commonly marketed for enhanced libido support, improved sexual performance, and increased arousal in both men and women.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cellular Vitality -->
+    <section class="category-section" id="cellular">
+      <div class="category-header">
+        <h2 class="category-name">Cellular Vitality</h2>
+        <div class="category-meta">
+          <span class="category-count">1 compound</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">NAD+</div>
+            <div class="product-dose">500MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>50</div>
+          <p class="product-desc">Coenzyme supplement researched for cellular energy production, anti-aging support, improved mitochondrial function, and cognitive performance.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Aesthetic & Skin -->
+    <section class="category-section" id="aesthetic">
+      <div class="category-header">
+        <h2 class="category-name">Aesthetic &amp; Skin</h2>
+        <div class="category-meta">
+          <span class="category-count">2 compounds</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">GHK-CU</div>
+            <div class="product-dose">100MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>50</div>
+          <p class="product-desc">Copper peptide widely promoted for skin rejuvenation, collagen stimulation, hair growth support, and anti-aging benefits.</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">MT-2</div>
+            <div class="product-dose">10MG</div>
+          </div>
+          <div class="product-price"><sup>$</sup>45</div>
+          <p class="product-desc">Melanotan II peptide promoted for enhanced tanning, increased melanin production, and libido support.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Essentials -->
+    <section class="category-section" id="essentials">
+      <div class="category-header">
+        <h2 class="category-name">Essentials</h2>
+        <div class="category-meta">
+          <span class="category-count">1 item</span>
+        </div>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-top">
+            <div class="product-name">Bacteriostatic Water</div>
+            <div class="product-dose">10ML</div>
+          </div>
+          <div class="product-price"><sup>$</sup>10</div>
+          <p class="product-desc">Bacteriostatic water used for safe reconstitution and dilution of lyophilized peptides for injection.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Wasatch<span>·</span>Vitality</div>
+      <p class="footer-tagline">
+        Research-grade compounds.<br>
+        Salt Lake City, Utah.
+      </p>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Research Use Only.</strong> All products listed on this site are intended for laboratory and research purposes only. These compounds are not approved by the FDA for human consumption and are not intended to diagnose, treat, cure, or prevent any disease or medical condition. By accessing this site, you confirm that you are a qualified researcher or professional and that you understand and comply with all applicable laws and regulations in your jurisdiction. Wasatch Vitality makes no medical claims regarding any listed compound.
+    </div>
+  </footer>
+
+</body>
+</html>
