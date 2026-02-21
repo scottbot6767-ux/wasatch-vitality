@@ -242,6 +242,52 @@
     }
 
     /* ──────────────────────────────────
+       PHOTO STRIP
+    ────────────────────────────────── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.8fr;
+      height: 340px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .photo-strip-item {
+      overflow: hidden;
+      position: relative;
+      border-right: 1px solid var(--border);
+    }
+
+    .photo-strip-item:last-child {
+      border-right: none;
+    }
+
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(0.85);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+
+    .photo-strip-item:hover img {
+      transform: scale(1.04);
+      filter: saturate(1);
+    }
+
+    @media (max-width: 900px) {
+      .photo-strip {
+        grid-template-columns: 1fr 1fr;
+        height: 420px;
+      }
+
+      .photo-strip-item:nth-child(n+3) {
+        display: none;
+      }
+    }
+
+    /* ──────────────────────────────────
        CATALOG NAV
     ────────────────────────────────── */
     .catalog-nav {
@@ -542,6 +588,22 @@
       </div>
     </div>
   </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&fit=crop" alt="Athlete training">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80&fit=crop" alt="Wellness">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&fit=crop" alt="Performance">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?w=800&q=80&fit=crop" alt="Running">
+    </div>
+  </div>
 
   <!-- CATALOG NAV -->
   <nav class="catalog-nav">
